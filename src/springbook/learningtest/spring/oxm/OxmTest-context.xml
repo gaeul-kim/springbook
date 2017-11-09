@@ -32,10 +32,7 @@
         <property name="sqlService" ref="sqlService" />
     </bean>
 
-    <bean id="sqlService" class="springbook.user.sqlservice.OxmSqlService">
-        <property name="unmarshaller" ref="unmarshaller" />
-        <property name="sqlmap" value="classpath:springbook/user/dao/sqlmap.xml"></property>
-    </bean>
+    <bean id="sqlService" class="springbook.user.sqlservice.DefaultSqlService" />
 
     <bean id="userService" class="springbook.user.service.UserServiceImpl">
         <property name="userDao" ref="userDao" />
@@ -46,7 +43,10 @@
 
     <bean id="mailSender" class="springbook.user.service.DummyMailSender" />
 
-    <bean id="unmarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
-        <property name="contextPath" value="springbook.user.sqlservice.jaxb" />
+    <bean id="unmarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
+        <property name="mappingLocation" value="springbook/learningtest/spring/oxm/mapping.xml" />
     </bean>
+<!--     <bean id="unmarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="contextPath" value="springbook.user.sqlservice.jaxb" />
+    </bean> -->
 </beans>
