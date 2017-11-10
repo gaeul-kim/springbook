@@ -40,14 +40,6 @@ public class UserDaoTest {
 		this.user3 = new User("bumjin", "박범진", "springno3", "user3@ksug.org", Level.GOLD, 100, 40);
 	}
 	
-	@Test
-	public void EnumTest(){
-	    assertThat(Level.BASIC, is(Level.BASIC));
-	    
-	    System.out.println(Level.BASIC);
-	}
-	
-	
 	@Test 
 	public void andAndGet() {		
 		dao.deleteAll();
