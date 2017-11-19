@@ -1,4 +1,5 @@
-package springbook.configuration;
+package springbook;
+
 
 import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.HSQL;
 

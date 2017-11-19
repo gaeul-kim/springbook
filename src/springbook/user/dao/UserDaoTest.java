@@ -21,13 +21,13 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import springbook.configuration.AppContext;
+import springbook.AppContext;
 import springbook.user.domain.Level;
 import springbook.user.domain.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppContext.class)
-@ActiveProfiles("production")
+@ActiveProfiles("test")
 public class UserDaoTest {
     @Autowired
     UserDao dao;
