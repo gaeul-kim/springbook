@@ -1,10 +1,10 @@
 package springbook;
 
-
 import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.HSQL;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -12,17 +12,23 @@ import org.springframework.oxm.Unmarshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 import springbook.user.sqlservice.OxmSqlService;
+import springbook.user.sqlservice.SqlMapConfig;
 import springbook.user.sqlservice.SqlRegistry;
 import springbook.user.sqlservice.SqlService;
 import springbook.user.sqlservice.updatable.EmbeddedDbSqlRegistry;
 
 @Configuration
 public class SqlServiceContext {
+    
+    @Autowired
+    SqlMapConfig sqlMapConfig;
+    
     @Bean
     public SqlService sqlService() {
         OxmSqlService sqlService = new OxmSqlService();
         sqlService.setUnmarshaller(unmarshaller());
         sqlService.setSqlRegistry(sqlRegistry());
+        sqlService.setSqlmap(this.sqlMapConfig.getSqlMapResource());
         return sqlService;
     }
 
